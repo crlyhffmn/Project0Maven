@@ -116,26 +116,20 @@ public class BankApplicationMain {
         customerMenu(addedUser);
     }
 
-    public static void userMenu() throws SQLException {
-        //Register for customer account
-        System.out.println("Please select an option: \n1: Register for a customer account\n2: Log out");
-        int choice = scanner.nextInt();
-        scanner.nextLine();
-        switch(choice) {
-            case 1:
-                break;
-            case 2:
-                welcome();
-        }
-    }
-
     public static void employeeMenu() throws SQLException {
         //Approve or reject an acct.
         //View customer's bank accts.
         //View log of all transactions
         System.out.println("Employee account menu options: \n1: Manage account applications\n2: View customer bank accounts\n3: View transaction log\n4: Log out\n5: Quit");
-        int choice = scanner.nextInt();
-        scanner.nextLine();
+        int choice = 0;
+        try {
+            choice = Integer.parseInt(scanner.nextLine());
+        } catch (Exception e) {
+            System.out.println("You have entered an invalid value. Please enter an integer from 1 to 3.");
+            System.out.println("Press Enter to continue");
+            try{System.in.read();}
+            catch(Exception e2){}
+        }
         switch(choice) {
             case 1:
                 System.out.println("Here is the list of unapproved applications: ");
@@ -212,7 +206,10 @@ public class BankApplicationMain {
             case 4: //Logout
                 welcome();
                 break;
-            default: //Quit
+            case 5://Quit
+                break;
+            default:
+                employeeMenu();
                 break;
         }
     }
