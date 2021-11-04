@@ -125,7 +125,7 @@ public class BankApplicationMain {
         try {
             choice = Integer.parseInt(scanner.nextLine());
         } catch (Exception e) {
-            System.out.println("You have entered an invalid value. Please enter an integer from 1 to 3.");
+            System.out.println("You have entered an invalid value. Please enter an integer");
             System.out.println("Press Enter to continue");
             try{System.in.read();}
             catch(Exception e2){}
@@ -230,8 +230,15 @@ public class BankApplicationMain {
         //Post money transfer to another acct.
         //accept money transfer from another acct.
         System.out.println("Customer account menu options: \n1: Apply for a new account\n2: View account balance(s)\n3: Withdraw from an account\n4: Deposit into an account\n5: Transfer money\n6: Approve money transfers\n7: Log out");
-        int choice = scanner.nextInt();
-        scanner.nextLine();
+        int choice = 0;
+        try {
+            choice = Integer.parseInt(scanner.nextLine());
+        } catch (Exception e) {
+            System.out.println("You have entered an invalid value. Please enter an integer");
+            System.out.println("Press Enter to continue");
+            try{System.in.read();}
+            catch(Exception e2){}
+        }
         switch(choice) {
             case 1: //Apply for new account
                 System.out.print("How much money do you wish to use as an initial deposit? $");
@@ -392,7 +399,6 @@ public class BankApplicationMain {
                     default:
                         break;
                 }
-
                 break;
             case 7: //Log out
                 welcome();
