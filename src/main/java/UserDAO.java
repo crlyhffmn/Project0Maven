@@ -10,7 +10,6 @@ public interface UserDAO {
 
     List<User> getUsers() throws SQLException;
 
-
     User getUserById(int id) throws SQLException;
 
     User getUserByUsername(String username) throws SQLException;
